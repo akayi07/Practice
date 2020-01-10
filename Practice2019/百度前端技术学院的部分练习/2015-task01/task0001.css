@@ -1,0 +1,17 @@
+h1 {
+    color: blue;
+}
+
+h2 {
+    font: 14px;
+}
+
+p {
+    color: yellow;
+    font: 12px;
+    background: #000;
+}
+
+img {
+    border: 2px solid #f00;
+}
