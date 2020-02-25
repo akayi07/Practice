@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script src="js/vue.js"></script>
+        <script src="js/vuerouter.js"></script>
+        <script>
+             var ComDesc = {
+                 data(){
+                    return {
+                        msg: ''
+                    }
+                 },
+                 template: `
+                    <div>我是{{msg}}</div>
+                `,
+                created: function(){
+                    this.msg = 'frontend';
+                },
+                watch: {
+                    '$route'(to, from){
+                        console.log(to);
+                        console.log(from);
+                        this.msg = to.params.id;
+                    }
+                }
+            };
+            var Timeline = {
+                template: `
+                    <div id="timeline">
+                        <router-link :to="{name: 'comDesc', params: {id: 'frontend'}}">前端</router-link>
+                        <router-link :to="{name: '', params: {id: 'backend'}}">后端</router-link>
+                        <router-view></router-view>
+                    </div>`
+            };
+            var Pin = {
+                template: `<div>沸点内容</div>`
+            }
+           
+            var router = new VueRouter({
+                routes: [
+                    {
+                        path: '/timeline',
+                        component: Timeline,
+                        children: [
+                            {
+                                path: '/timeline/:id',
+                                name: 'comDesc',
+                                component: ComDesc
+                            }
+                        ]
+                    },
+                    {
+                        path: '/pin',
+                        component: Pin
+                    }
+                ]
+            });
+            var App = {
+                template: `
+                <div>
+                    <router-link to="/timeline">首页</router-link>
+                    <router-link to="/pin">沸点</router-link>
+                    <router-view></router-view>
+                </div>
+                `
+            };
+
+            new Vue({
+                el: '#app',
+                components: {
+                    App
+                },
+                router,
+                template:   `
+                    <App/>
+                `
+            });
+        </script>
+    </body>
+</html>

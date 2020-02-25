@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>czxdv</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        Vue.filter('myReverse', function(value, arg){
+            return arg + ' ' +value.split('').reverse().join('');
+        });
+        var App = {
+            data(){
+                return {
+                    price: 0,
+                    msg: 'hellofilter'
+                }
+            },
+            template: `
+            <div>
+                <input type='number' v-model='price'>
+                <h3>{{price | myCurrency}}</h3>
+                <h4>{{msg | myReverse('哈哈哈')}}</h4>
+            </div>
+            `,
+            filters: {
+                myCurrency: function(value){
+                    return '￥' + value;
+                }
+            }
+        };
+        new Vue({
+            el: '#app',
+            components: {
+                App
+            },
+            template: '<App/>'
+        });
+    </script>
+</body>
+</html>

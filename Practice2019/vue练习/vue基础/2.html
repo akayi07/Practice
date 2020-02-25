@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>czxdv</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        Vue.component('myList', {
+            template: `
+                <li>
+                    预留1
+                    <slot name='three'></slot>
+                    预留2
+                    <slot name='two'></slot>
+                </li>
+            `
+        });
+
+        var App = {
+            template: `
+            <div>
+                <ul>
+                   <myList>
+                    <h2 slot="two">预留1</h2>
+                    <h3 slot="three">预留2</h3>
+                   </myList>   
+                </ul>
+            </div>
+            `
+        };
+        new Vue({
+            el: '#app',
+            components: {
+                App
+            },
+            template: '<App/>'
+        });
+    </script>
+</body>
+</html>

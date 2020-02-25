@@ -1,0 +1,6 @@
+EventUtil.addHandler(window, "load", function(event){
+    var list = document.getElementById("myList");
+    var item = document.createElement("li");
+    item.appendChild(dopcument.createTextNode("Item 4"));
+    EventUtil.preventDefault(event)
+})

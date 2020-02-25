@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+    </head>
+    <body>
+       <div id="app">{{msg}}</div>
+        <script src="vue.js"></script>    
+        <script>
+            Vue.component('Test', {
+                data(){
+                    return {
+                        msg: 'Hello World'
+                    }
+                },
+                template: `
+                    <div>
+                        <div></div>
+                    </div>
+                `
+            });
+            <keep-alive></keep-alive>
+            var App = {
+                data(){
+                    return {
+
+                    }
+                },
+                template: `
+                    <div class="app">
+                        <Test/>
+                    </div>
+                `
+            };
+            var vm = new Vue({
+                el: '#app',
+                data() {
+                    return {
+                    }
+                },
+                template: '<App/>',
+                components: {
+                    App
+                }
+            })
+        </script>
+    </body>
+
+</html>
