@@ -1,0 +1,5 @@
+$emit('eventName', args):子组件调用父组件的方法并传递数据
+兄弟组件传值：
+定义一个空vue实例empty，
+$emit定义一个自定义事件，传值empty.$on，
+empty.$on('事件名',callback)callback把$emit要传送的数据传给当前组件。(callback用箭头函数方便this.msg = val)

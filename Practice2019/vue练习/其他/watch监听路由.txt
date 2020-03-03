@@ -1,0 +1,3 @@
+wath: {
+	'$route': 'method'
+}
